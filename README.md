@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/filfreire/anagram.svg?branch=master)](https://travis-ci.org/filfreire/anagram)
 [![codecov](https://codecov.io/gh/filfreire/anagram/branch/master/graph/badge.svg)](https://codecov.io/gh/filfreire/anagram)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/71e0eccc86024aa5a1a26e216f52e3b2)](https://www.codacy.com/app/filfreire/anagram?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=filfreire/anagram&amp;utm_campaign=Badge_Grade)
 
 Two string checker for anagrams
 
