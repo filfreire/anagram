@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/filfreire/anagram.svg?branch=master)](https://travis-ci.org/filfreire/anagram)
+[![codecov](https://codecov.io/gh/filfreire/anagram/branch/master/graph/badge.svg)](https://codecov.io/gh/filfreire/anagram)
 
 Two string checker for anagrams
 
