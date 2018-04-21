@@ -55,7 +55,7 @@ public final class AnagramOf {
     }
 
     /**
-     * Check if is anagram.
+     * Check if is exact anagram.
      *
      * @return Boolean if is anagram.
      */
@@ -67,7 +67,7 @@ public final class AnagramOf {
     }
 
     /**
-     * Check if is anagram.
+     * Check if is meaningful anagram.
      *
      * @return Boolean if is anagram.
      */
