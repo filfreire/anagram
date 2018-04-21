@@ -21,10 +21,10 @@
  */
 package com.filfreire;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import org.cactoos.list.StickyList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import org.cactoos.map.StickyMap;
 
 /**
  * Anagram App.
@@ -32,56 +32,62 @@ import org.cactoos.list.StickyList;
  * @author Filipe Freire (livrofubia@gmail.com)
  * @version $Id: ??? $
  * @since 1.0
+ * @checkstyle LineLengthCheck (500 lines)
  */
-public final class App {
+public final class CharCountMap {
 
     /**
-     * Arguments.
+     * Sentence.
      */
-    private final transient Iterable<String> arguments;
+    private final String sentence;
 
     /**
      * Ctor.
-     * @param args Command line args
-     */
-    public App(final String... args) {
-        this.arguments = Arrays.asList(args);
-    }
-
-    /**
-     * Main.
      *
-     * @param args Arguments
-     * @throws IOException If fails
+     * @param sentence Sentence to create count map
      */
-    public static void main(final String... args) throws IOException {
-        new App(args).exec();
+    public CharCountMap(final String sentence) {
+        this.sentence = sentence;
     }
 
     /**
-     * Run it all.
-     * @throws IOException If fails
+     * Map with char count.
+     *
+     * @return Map with char count.
      */
-    @SuppressWarnings("PMD.SystemPrintln")
-    public void exec() throws IOException {
-        final List<String> sentences = new StickyList<>(this.arguments);
-        if (sentences.size() < 2) {
-            throw new IOException("Min number of arguments is 2!");
-        }
-        final AnagramOf anagram = new AnagramOf(
-            sentences.get(0),
-            sentences.get(1)
+    public Map<Character, Integer> map() {
+        return this.getCharacterIntegerMap(
+            this.sentence.toCharArray()
         );
-        if (anagram.isExact()) {
-            System.out.println("Exact anagram: TRUE");
-        } else {
-            System.out.println("Exact anagram: FALSE");
+    }
+
+    /**
+     * Map with lowercase char count.
+     *
+     * @return Map with char count.
+     */
+    public Map<Character, Integer> lowercaseMap() {
+        return this.getCharacterIntegerMap(
+            this.sentence.toLowerCase(Locale.ENGLISH).toCharArray()
+        );
+    }
+
+    /**
+     * Get chart count map.
+     *
+     * @param chars Characters of sentence
+     * @return Map with char int count
+     */
+    private static Map<Character, Integer> getCharacterIntegerMap(final char... chars) {
+        final Map<Character, Integer> map = new HashMap<>();
+        for (final char chr : chars) {
+            if (map.containsKey(chr)) {
+                map.put(chr, map.get(chr) + 1);
+            } else {
+                map.put(chr, 1);
+            }
         }
-        if (anagram.isMeaningful()) {
-            System.out.println("Meaningful anagram: TRUE");
-        } else {
-            System.out.println("Meaningful anagram: FALSE");
-        }
+        return new StickyMap<>(map);
     }
 
 }

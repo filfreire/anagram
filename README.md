@@ -1,5 +1,7 @@
 # anagram
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Two string checker for anagrams
 
 ## Details
@@ -18,10 +20,30 @@ In terminal run command:
 mvn clean install
 ```
 
-
 ## How to run
 
-(wip)
+After building, run:
+
 ```
-java -jar target/artifact.jar "<string 1>" "<string 2>"
+java -jar target/anagram-1.0-SNAPSHOT-jar-with-dependencies.jar <first_sentence> <second_sentence>
 ```
+
+**Examples**:
+```
+java -jar target/anagram-1.0-SNAPSHOT-jar-with-dependencies.jar aaaa aaaa
+
+Exact anagram: TRUE
+Meaningful anagram: TRUE
+```
+
+
+```
+java -jar target/anagram-1.0-SNAPSHOT-jar-with-dependencies.jar "Eleven plus two" "Twelve plus one"
+
+Exact anagram: FALSE
+Meaningful anagram: TRUE
+```
+
+## Notes:
+- Using Cactoos library ([link](https://github.com/yegor256/cactoos));
+- Using Qulice for "hardcore" static analysis ([link](http://www.qulice.com/));
