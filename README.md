@@ -1,6 +1,7 @@
 # anagram
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/filfreire/anagram.svg?branch=master)](https://travis-ci.org/filfreire/anagram)
 
 Two string checker for anagrams
 
