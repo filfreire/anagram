@@ -26,7 +26,14 @@ mvn clean install
 ## How to run
 
 After building, run:
+```
+./run.sh <first_sentence> <second_sentence>
 
+# Example:
+./run.sh "Eleven plus two" "Twelve plus one"
+```
+
+Or calling jar directly:
 ```
 java -jar target/anagram-1.0-SNAPSHOT-jar-with-dependencies.jar <first_sentence> <second_sentence>
 ```
