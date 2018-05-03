@@ -21,52 +21,57 @@
  */
 package com.filfreire;
 
-import java.util.Locale;
 import java.util.Map;
 
 /**
- * CharCountMap.
+ * BoolAnagram.
  *
  * @author Filipe Freire (livrofubia@gmail.com)
  * @version $Id: ??? $
  * @since 1.0
  * @checkstyle LineLengthCheck (500 lines)
  */
-public final class CharCountMap {
+public final class BoolAnagram {
 
     /**
-     * Sentence.
+     * Sentence 1.
      */
-    private final String sentence;
+    private final Map<Character, Integer> left;
+
+    /**
+     * Sentence 2.
+     */
+    private final Map<Character, Integer> right;
 
     /**
      * Ctor.
      *
-     * @param sentence Sentence to create count map
+     * @param left Sentence to create count map
+     * @param right Sentence to create count map
      */
-    public CharCountMap(final String sentence) {
-        this.sentence = sentence;
+    public BoolAnagram(final Map<Character, Integer> left, final Map<Character, Integer> right) {
+        this.left = left;
+        this.right = right;
     }
 
     /**
-     * Map with char count.
+     * Verify anagram.
      *
-     * @return Map with char count.
+     * @return Boolean if is anagram.
      */
-    public Map<Character, Integer> map() {
-        return new CharIntMap(
-            this.sentence.toCharArray()
-        ).map();
+    public boolean asBoolean() {
+        boolean res = true;
+        if (this.left.size() == this.right.size()) {
+            for (final char key : this.left.keySet()) {
+                if (!this.left.get(key).equals(this.right.get(key))) {
+                    res = false;
+                    break;
+                }
+            }
+        } else {
+            res = false;
+        }
+        return res;
     }
 
-    /**
-     * Map with lowercase char count.
-     *
-     * @return Map with char count.
-     */
-    public Map<Character, Integer> lowercaseMap() {
-        return new CharIntMap(
-            this.sentence.toLowerCase(Locale.ENGLISH).toCharArray()
-        ).map();
-    }
 }

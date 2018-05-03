@@ -21,10 +21,8 @@
  */
 package com.filfreire;
 
-import java.util.Map;
-
 /**
- * Anagram App.
+ * AnagramOf.
  *
  * @author Filipe Freire (livrofubia@gmail.com)
  * @version $Id: ??? $
@@ -60,10 +58,10 @@ public final class AnagramOf {
      * @return Boolean if is anagram.
      */
     public boolean isExact() {
-        return this.verifyAnagram(
+        return new BoolAnagram(
             new CharCountMap(this.left).map(),
             new CharCountMap(this.right).map()
-        );
+        ).asBoolean();
     }
 
     /**
@@ -72,32 +70,10 @@ public final class AnagramOf {
      * @return Boolean if is anagram.
      */
     public boolean isMeaningful() {
-        return this.verifyAnagram(
+        return new BoolAnagram(
             new CharCountMap(this.left).lowercaseMap(),
             new CharCountMap(this.right).lowercaseMap()
-        );
-    }
-
-    /**
-     * Verify anagram.
-     *
-     * @param left First sentence
-     * @param right Second sentence
-     * @return Boolean if is anagram.
-     */
-    private static boolean verifyAnagram(final Map<Character, Integer> left, final Map<Character, Integer> right) {
-        boolean res = true;
-        if (left.size() == right.size()) {
-            for (final char key : left.keySet()) {
-                if (!left.get(key).equals(right.get(key))) {
-                    res = false;
-                    break;
-                }
-            }
-        } else {
-            res = false;
-        }
-        return res;
+        ).asBoolean();
     }
 
 }

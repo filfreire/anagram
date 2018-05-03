@@ -21,52 +21,49 @@
  */
 package com.filfreire;
 
-import java.util.Locale;
+import java.util.HashMap;
 import java.util.Map;
+import org.cactoos.map.StickyMap;
 
 /**
- * CharCountMap.
+ * CharIntMap.
  *
  * @author Filipe Freire (livrofubia@gmail.com)
  * @version $Id: ??? $
  * @since 1.0
  * @checkstyle LineLengthCheck (500 lines)
  */
-public final class CharCountMap {
+public final class CharIntMap {
 
     /**
-     * Sentence.
+     * Chars.
      */
-    private final String sentence;
+    private final char[] chars;
 
     /**
      * Ctor.
      *
-     * @param sentence Sentence to create count map
+     * @param chars Char array to create char int map
      */
-    public CharCountMap(final String sentence) {
-        this.sentence = sentence;
+    public CharIntMap(final char... chars) {
+        this.chars = chars;
     }
 
     /**
-     * Map with char count.
+     * Get chart count map.
      *
-     * @return Map with char count.
+     * @return Map with char int count
      */
     public Map<Character, Integer> map() {
-        return new CharIntMap(
-            this.sentence.toCharArray()
-        ).map();
+        final Map<Character, Integer> map = new HashMap<>();
+        for (final char chr : this.chars) {
+            if (map.containsKey(chr)) {
+                map.put(chr, map.get(chr) + 1);
+            } else {
+                map.put(chr, 1);
+            }
+        }
+        return new StickyMap<>(map);
     }
 
-    /**
-     * Map with lowercase char count.
-     *
-     * @return Map with char count.
-     */
-    public Map<Character, Integer> lowercaseMap() {
-        return new CharIntMap(
-            this.sentence.toLowerCase(Locale.ENGLISH).toCharArray()
-        ).map();
-    }
 }
